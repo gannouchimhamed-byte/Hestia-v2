@@ -12,6 +12,16 @@ const STATUS_LABELS: Record<string, { label: string; class: string }> = {
   PENDING: { label: 'En attente', class: 'bg-yellow-100 text-yellow-800' },
 }
 
+type InquiryWithRelations = {
+  id: string
+  message: string
+  createdAt: Date
+  propertyId: string
+  userId: string
+  property: { title: string; id: string }
+  user: { name: string; email: string }
+}
+
 export default async function AgentDashboardPage() {
   const session = await getSession()
 
@@ -20,7 +30,7 @@ export default async function AgentDashboardPage() {
   }
 
   let properties: Awaited<ReturnType<typeof prisma.property.findMany>> = []
-  let inquiries: Awaited<ReturnType<typeof prisma.inquiry.findMany>> = []
+  let inquiries: InquiryWithRelations[] = []
   let stats = { total: 0, active: 0, sold: 0, rented: 0 }
 
   try {
