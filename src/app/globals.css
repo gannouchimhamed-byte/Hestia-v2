@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --hestia-primary: #1a5f4a;
+    --hestia-primary-light: #2d8a6e;
+    --hestia-primary-dark: #124a3a;
+    --hestia-accent: #e8b931;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-gray-800 bg-white antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-hestia-primary text-white px-6 py-3 rounded-lg font-medium 
+           hover:bg-hestia-primary-dark transition-colors duration-200 
+           focus:outline-none focus:ring-2 focus:ring-hestia-primary focus:ring-offset-2;
+  }
+
+  .btn-accent {
+    @apply bg-hestia-accent text-hestia-primary-dark px-6 py-3 rounded-lg font-semibold 
+           hover:bg-yellow-400 transition-colors duration-200;
+  }
+
+  .btn-outline {
+    @apply border-2 border-hestia-primary text-hestia-primary px-6 py-3 rounded-lg font-medium 
+           hover:bg-hestia-primary hover:text-white transition-colors duration-200;
+  }
+
+  .input-field {
+    @apply w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-800
+           focus:outline-none focus:ring-2 focus:ring-hestia-primary focus:border-transparent
+           placeholder-gray-400 transition-shadow duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300;
+  }
+
+  .badge-sale {
+    @apply bg-hestia-primary text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide;
+  }
+
+  .badge-rent {
+    @apply bg-hestia-accent text-hestia-primary-dark text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide;
+  }
+}
